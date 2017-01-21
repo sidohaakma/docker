@@ -11,6 +11,10 @@ Docker images for MOLGENIS applications.
 
 `docker-compose build`
 
+## Bring image up
+
+`docker-compose up`
+
 ## Start MOLGENIS
 `docker-compose start`
 
