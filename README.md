@@ -1,20 +1,12 @@
 # Docker
-Docker images for MOLGENIS applications.
+Docker deploy template and images for MOLGENIS applications.
 
 ## Requirements
 - [Docker](https://www.docker.com/)
 
-## Installation
-`git clone https://github.com/molgenis/docker.git`
+## Deployment
+`git clone -b template/deploy --single-branch https://github.com/molgenis/docker molgenis-deploy`
 
-`cd docker\molgenis\2.0`
+`cd molgenis-deploy`
 
-`docker-compose up`
-
-## Start MOLGENIS
-`docker-compose start`
-
-Navigate to [http://localhost:8081/](http://localhost:8081/) in your browser.
-
-## Stop MOLGENIS
-`docker-compose stop`
+* now follow deloyment SOP
