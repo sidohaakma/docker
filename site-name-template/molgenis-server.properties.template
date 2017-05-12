@@ -1,5 +1,5 @@
-user.password=
-admin.password=
+user.password=molgenis
+admin.password=molgenis
 db_uri=jdbc\:postgresql\://app-[site-app-name]/[app-database-name]?reWriteBatchedInserts\=true&autosave\=CONSERVATIVE
-db_password=
-db_user=
+db_password=molgenis
+db_user=molgenis
