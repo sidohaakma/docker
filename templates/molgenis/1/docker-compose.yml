@@ -1,30 +1,32 @@
-app:
-  build:
-    context: .
-    args:
-      - MOLGENIS_VERSION=4.1.0
-  ports:
-    - 8081:8080
-  links:
-    - db
-  volumes:
-    - app-data:/opt/molgenis
-  labels:
-    io.rancher.scheduler.global: 'true'
-    io.rancher.container.create_agent: 'true'
-    io.rancher.container.agent.role: environmentAdmin
-  db:
-    image: postgres:9.6-alpine
-    environment:
-      - POSTGRES_USER=molgenis
-      - POSTGRES_PASSWORD=molgenis
-      - POSTGRES_DB=molgenis
-    expose:
-      - 5432
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    labels:
-      io.rancher.container.create_agent: 'true'
+version: '3.0'
+services:
+    app:
+      build:
+          context: .
+          args:
+              - MOLGENIS_VERSION=4.1.0
+      ports:
+        - 8081:8080
+      links:
+        - db
+      volumes:
+        - app-data:/opt/molgenis
+      labels:
+        io.rancher.scheduler.global: 'true'
+        io.rancher.container.create_agent: 'true'
+        io.rancher.container.agent.role: environmentAdmin
+    db:
+      image: postgres:9.6-alpine
+      environment:
+          - POSTGRES_USER=molgenis
+          - POSTGRES_PASSWORD=molgenis
+          - POSTGRES_DB=molgenis
+      expose:
+        - 5432
+      volumes:
+        - db-data:/var/lib/postgresql/data
+      labels:
+        io.rancher.container.create_agent: 'true'
 volumes:
     db-data:
     app-data:

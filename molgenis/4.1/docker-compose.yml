@@ -1,4 +1,4 @@
-version: "3.0"
+version: '3.0'
 services:
     app:
       build:
@@ -6,7 +6,7 @@ services:
           args:
               - MOLGENIS_VERSION=4.1.0      
       ports:
-        - "8081:8080"
+        - '8081:8080'
       links:
         - db
       volumes:
@@ -18,7 +18,7 @@ services:
           - POSTGRES_PASSWORD=molgenis
           - POSTGRES_DB=molgenis
       expose:
-        - "5432"
+        - '5432'
       volumes:
         - db-data:/var/lib/postgresql/data
 volumes:
