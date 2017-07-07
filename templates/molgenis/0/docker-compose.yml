@@ -9,6 +9,10 @@ services:
         - elasticsearch
       volumes:
         - app-data:/opt/molgenis
+      labels:
+        - io.rancher.scheduler.global: 'true'
+        - io.rancher.container.create_agent: 'true'
+        - io.rancher.container.agent.role: environmentAdmin
 
     db:
       image: postgres:9.6-alpine

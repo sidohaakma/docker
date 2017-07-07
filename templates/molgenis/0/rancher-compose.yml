@@ -1,7 +1,5 @@
 .catalog:
   name: molgenis
-  version: v5.0
+  version: v5.0.0
   description: Molgenis
-  minimum_rancher_version: v5.0
-  maintainer: "Molgenis"
-  uuid: molgenis-5
+  minimum_rancher_version: v1.6.3

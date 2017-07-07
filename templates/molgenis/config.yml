@@ -1,6 +1,5 @@
-name: Molgenis
-description: |
-    Molgenis
+name: "Molgenis"
+description: "Molgenis"
 version: v5.0
 category: All
 maintainer: Molgenis
