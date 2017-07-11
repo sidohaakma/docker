@@ -1,6 +1,8 @@
 # MOLGENIS
+### Flexible software for scientific data
+#### Process, manage, query, annotate, integrate, analyse, share
 
-This template creates MOLGENIS set on top of Rancher. It creates 3 docker services:
+This template creates a MOLGENIS stack on top of Rancher. It creates 3 docker services:
 
 - MOLGENIS instance
 - Postgress instance
