@@ -7,20 +7,20 @@ services:
     links:
       - postgress
       - elasticsearch
-    volumes:
-      - app-data:/opt/molgenis
+    volumes_from:
+      - molgenis-data
     labels:
       io.rancher.scheduler.global: 'true'
       io.rancher.container.create_agent: 'true'
       io.rancher.container.agent.role: environmentAdmin
-  postgress:
+  postgres:
     image: postgres:9.6-alpine
     environment:
       - POSTGRES_USER=molgenis
       - POSTGRES_PASSWORD=molgenis
       - POSTGRES_DB=molgenis
-    volumes:
-      - db-data:/var/lib/postgresql/data
+    volumes_from:
+      - postgres-data
     expose:
       - 5432
     labels:
@@ -37,21 +37,29 @@ services:
       memlock:
         soft: -1
         hard: -1
-      volumes:
-        - es-data:/usr/share/elasticsearch/data
+      volumes_from:
+        - elasticseach-data
       ports:
         - 9200:9200
         - 9300:9300
       labels:
         io.rancher.container.create_agent: 'true'
-volumes:
-    db-data:
-      driver: rancher-nfs
-      external: true
-    app-data:
-      driver: rancher-nfs
-      external: true
-    es-data:
-      driver: rancher-nfs
-      external: true
 
+  postgres-data:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: true
+    volumes:
+      - /var/lib/postgresql/data/pgdata
+  molgenis-data:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: true
+    volumes:
+      - /opt/molgenis
+  elasticsearch-data:
+    image: busybox
+    labels:
+      io.rancher.container.start_once: true
+    volumes:
+      - /usr/share/elasticsearch/data
