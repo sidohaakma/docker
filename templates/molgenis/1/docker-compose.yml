@@ -1,8 +1,5 @@
 app:
-  build:
-    context: .
-      args:
-        - MOLGENIS_VERSION=4.1.0
+  image: registry.haakma.org/molgenis:4.1.0
   ports:
     - 8081:8080
   links:
