@@ -1,47 +1,49 @@
-app:
-  image: registry.haakma.org/molgenis:5.0
-  ports:
-    - 8081:8080
-  links:
-    - db
-    - elasticsearch
-  volumes:
-    - app-data:/opt/molgenis
-  labels:
-    io.rancher.scheduler.global: 'true'
-    io.rancher.container.create_agent: 'true'
-    io.rancher.container.agent.role: environmentAdmin
-db:
-  image: postgres:9.6-alpine
-  environment:
-    - POSTGRES_USER=molgenis
-    - POSTGRES_PASSWORD=molgenis
-    - POSTGRES_DB=molgenis
-  volumes:
-    - db-data:/var/lib/postgresql/data
-  expose:
-    - 5432
-  labels:
-    io.rancher.container.create_agent: 'true'
-elasticsearch:
-  image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
-  container_name: elasticsearch
-  environment:
-    - cluster.name=molgenis
-    - bootstrap.memory_lock=true
-    - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
-    - xpack.security.enabled=false
-  ulimits:
-    memlock:
-      soft: -1
-      hard: -1
-    volumes:
-      - es-data:/usr/share/elasticsearch/data
+version: '2'
+services:
+  molgenis:
+    image: registry.haakma.org/molgenis:5.0
     ports:
-      - 9200:9200
-      - 9300:9300
+      - 8081:8080
+    links:
+      - postgress
+      - elasticsearch
+    volumes:
+      - app-data:/opt/molgenis
+    labels:
+      io.rancher.scheduler.global: 'true'
+      io.rancher.container.create_agent: 'true'
+      io.rancher.container.agent.role: environmentAdmin
+  postgress:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=molgenis
+      - POSTGRES_PASSWORD=molgenis
+      - POSTGRES_DB=molgenis
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    expose:
+      - 5432
     labels:
       io.rancher.container.create_agent: 'true'
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+    container_name: elasticsearch
+    environment:
+      - cluster.name=molgenis
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      volumes:
+        - es-data:/usr/share/elasticsearch/data
+      ports:
+        - 9200:9200
+        - 9300:9300
+      labels:
+        io.rancher.container.create_agent: 'true'
 volumes:
     db-data:
     app-data:
