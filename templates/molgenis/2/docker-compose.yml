@@ -18,6 +18,7 @@
       - POSTGRES_USER=molgenis
       - POSTGRES_PASSWORD=molgenis
       - POSTGRES_DB=molgenis
+      - PGDATA=/var/lib/postgresql/data/pgdata
     volumes_from:
       - postgres-data
     expose:
