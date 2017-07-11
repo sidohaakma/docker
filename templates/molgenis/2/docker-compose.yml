@@ -48,5 +48,6 @@ volumes:
     db-data:
     app-data:
     es-data:
-        driver: local
+    driver: rancher-nfs
+    external: true
 
