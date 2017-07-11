@@ -27,8 +27,6 @@
       io.rancher.container.create_agent: true
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
-    environment:
-      - cluster.name=molgenis
     volumes_from:
       - elasticseach-data
     ports:
