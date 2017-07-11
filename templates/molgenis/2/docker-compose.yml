@@ -1,5 +1,3 @@
-version: '2'
-services:
   molgenis:
     image: registry.haakma.org/molgenis:5.0
     ports:
