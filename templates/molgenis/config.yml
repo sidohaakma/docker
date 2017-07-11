@@ -1,6 +1,6 @@
-name: "Molgenis"
-description: "Molgenis"
+name: Molgenis
+description: Molgenis | Flexible software for scientific data
 version: v5.0
 category: All
-maintainer: Molgenis
+maintainer: Molgenis DEV-team and community-members
 projectURL: http://molgenis.org
