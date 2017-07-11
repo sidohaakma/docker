@@ -46,8 +46,12 @@ services:
         io.rancher.container.create_agent: 'true'
 volumes:
     db-data:
+      driver: rancher-nfs
+      external: true
     app-data:
+      driver: rancher-nfs
+      external: true
     es-data:
-    driver: rancher-nfs
-    external: true
+      driver: rancher-nfs
+      external: true
 
