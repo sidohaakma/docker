@@ -9,7 +9,6 @@
       - molgenis-data
     labels:
       io.rancher.sidekicks: molgenis-data
-      io.rancher.scheduler.global: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
   postgres:
@@ -25,7 +24,6 @@
       - 5432
     labels:
       io.rancher.sidekicks: postgres-data
-      io.rancher.scheduler.global: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
   elasticsearch:
@@ -46,7 +44,6 @@
       - 9300:9300
     labels:
       io.rancher.sidekicks: elasticsearch-data
-      io.rancher.scheduler.global: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
 
