@@ -54,6 +54,7 @@
     image: busybox
     labels:
       io.rancher.container.start_once: true
+      io.rancher.container.system: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
     volumes:
@@ -62,6 +63,7 @@
     image: busybox
     labels:
       io.rancher.container.start_once: true
+      io.rancher.container.system: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
     volumes:
@@ -70,6 +72,7 @@
     image: busybox
     labels:
       io.rancher.container.start_once: true
+      io.rancher.container.system: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
     volumes:
