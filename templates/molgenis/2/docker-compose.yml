@@ -23,6 +23,7 @@
     expose:
       - 5432
     labels:
+      io.rancher.scheduler.global: false
       io.rancher.sidekicks: postgres-data
 
   elasticsearch:
@@ -42,23 +43,27 @@
       - 9200:9200
       - 9300:9300
     labels:
+      io.rancher.scheduler.global: false
       io.rancher.sidekicks: elasticsearch-data
 
   postgres-data:
     image: busybox
     labels:
+      io.rancher.scheduler.global: false
       io.rancher.container.start_once: true
     volumes:
       - /var/lib/postgresql/data/pgdata
   molgenis-data:
     image: busybox
     labels:
+      io.rancher.scheduler.global: false
       io.rancher.container.start_once: true
     volumes:
       - /opt/molgenis
   elasticsearch-data:
     image: busybox
     labels:
+      io.rancher.scheduler.global: false
       io.rancher.container.start_once: true
     volumes:
       - /usr/share/elasticsearch/data
