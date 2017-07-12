@@ -9,8 +9,7 @@
       - molgenis-data
     labels:
       io.rancher.sidekicks: molgenis-data
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
+      io.rancher.container.system: true
   postgres:
     image: postgres:9.6-alpine
     environment:
@@ -24,8 +23,7 @@
       - 5432
     labels:
       io.rancher.sidekicks: postgres-data
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
+      io.rancher.container.system: true
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
     environment:
@@ -44,30 +42,23 @@
       - 9300:9300
     labels:
       io.rancher.sidekicks: elasticsearch-data
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
+      io.rancher.container.system: true
 
   postgres-data:
     image: busybox
     labels:
       io.rancher.container.start_once: true
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
     volumes:
       - /var/lib/postgresql/data/pgdata
   molgenis-data:
     image: busybox
     labels:
       io.rancher.container.start_once: true
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
     volumes:
       - /opt/molgenis
   elasticsearch-data:
     image: busybox
     labels:
       io.rancher.container.start_once: true
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
     volumes:
       - /usr/share/elasticsearch/data
