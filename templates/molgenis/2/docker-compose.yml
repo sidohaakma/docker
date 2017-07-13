@@ -1,5 +1,5 @@
   molgenis:
-    image: registry.haakma.org/molgenis:5.0.0
+    image: sidohaakma/molgenis-docker:5.0.0
     ports:
       - 8081:8080
     links:
