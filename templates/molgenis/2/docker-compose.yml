@@ -1,5 +1,5 @@
   molgenis:
-    image: sidohaakma/molgenis-docker:5.0.0
+    image: sidohaakma/molgenis-docker:5.0.1
     ports:
       - 8081:8080
     links:
