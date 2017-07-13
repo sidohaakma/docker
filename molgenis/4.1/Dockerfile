@@ -16,6 +16,4 @@ RUN rm -r $CATALINA_HOME/webapps/ROOT \
 RUN mkdir -p /opt/molgenis \
 	&& if ! test -f /opt/molgenis/molgenis-server.properties; then echo -e "db_user=molgenis\ndb_password=molgenis\ndb_uri=jdbc\:postgresql\://db/molgenis?reWriteBatchedInserts\=true&autosave\=CONSERVATIVE\nadmin.password=admin" > /opt/molgenis/molgenis-server.properties; fi
 
-VOLUME /opt/molgenis
-
 CMD ["catalina.sh", "run"]
