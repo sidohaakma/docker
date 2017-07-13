@@ -1,6 +1,6 @@
 FROM tomcat:7.0-jre8-alpine
 
-ARG MOLGENIS_VERSION
+ENV MOLGENIS_VERSION=4.1.0
 
 # --no-cache allows users to install packages with an index that is updated and used on-the-fly and not cached locally
 # This avoids the need to use --update and remove /var/cache/apk/* when done installing packages.
