@@ -51,7 +51,7 @@
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
   loadbalancer:
-    image: rancher/lb-service-haproxy:stable
+    image: rancher/lb-service-haproxy:v0.7.5
     ports:
       - 80
     labels:
