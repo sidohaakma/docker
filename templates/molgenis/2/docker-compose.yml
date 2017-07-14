@@ -22,9 +22,6 @@
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes_from:
       - postgres-data
-    ports:
-      - 9200
-      - 9300
     expose:
       - 5432
     labels:
@@ -45,22 +42,22 @@
         hard: -1
     volumes_from:
       - elasticsearch-data
-    expose:
-      - 9200
-      - 9300
+    ports:
+      - 9200:9200
+      - 9300:9300
     labels:
       io.rancher.sidekicks: elasticsearch-data
       io.rancher.scheduler.global: true
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
   loadbalancer:
-    image: rancher/lb-service-haproxy:v0.7.5
+    image: rancher/lb-service-haproxy:stable
     ports:
       - 80
-    labels:
-      io.rancher.scheduler.global: true
-      io.rancher.scheduler.affinity:host_label: type=molgenis
-      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
+  lb
+    io.rancher.scheduler.global: true
+    io.rancher.scheduler.affinity:host_label: type=molgenis
+    io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
 
   postgres-data:
     image: busybox
