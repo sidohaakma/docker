@@ -42,7 +42,7 @@
         hard: -1
     volumes_from:
       - elasticsearch-data
-    ports:
+    expose:
       - 9200
       - 9300
     labels:
