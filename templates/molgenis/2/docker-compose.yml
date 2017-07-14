@@ -42,9 +42,9 @@
         hard: -1
     volumes_from:
       - elasticsearch-data
-    ports:
-      - 9200:9200
-      - 9300:9300
+    expose:
+      - 9200
+      - 9300
     labels:
       io.rancher.sidekicks: elasticsearch-data
       io.rancher.scheduler.global: true
@@ -54,10 +54,10 @@
     image: rancher/lb-service-haproxy:stable
     ports:
       - 80
-  lb
-    io.rancher.scheduler.global: true
-    io.rancher.scheduler.affinity:host_label: type=molgenis
-    io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
+    labels:
+      io.rancher.scheduler.global: true
+      io.rancher.scheduler.affinity:host_label: type=molgenis
+      io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
 
   postgres-data:
     image: busybox
