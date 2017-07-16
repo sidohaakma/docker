@@ -40,8 +40,8 @@
       memlock:
         soft: -1
         hard: -1
-    volumes_from:
-      - elasticsearch-data
+#    volumes_from:
+#      - elasticsearch-data
     expose:
       - 9200
       - 9300
