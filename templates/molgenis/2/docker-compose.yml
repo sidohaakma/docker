@@ -44,8 +44,8 @@
 #    volumes_from:
 #      - elasticsearch-data
     ports:
-       - 9200
-       - 9300
+       - 9200:9200
+       - 9300:9300
     labels:
       #io.rancher.sidekicks: elasticsearch-data
       io.rancher.scheduler.global: true
