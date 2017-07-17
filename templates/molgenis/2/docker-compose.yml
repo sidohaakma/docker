@@ -5,9 +5,6 @@
     links:
       - postgres
       - elasticsearch
-    depends_on:
-      - postgres
-      - elasticsearch
     volumes_from:
       - molgenis-data
     labels:
