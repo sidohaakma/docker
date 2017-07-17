@@ -33,7 +33,6 @@
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
     environment:
       - 'cluster.name=molgenis'
-      - 'network.host=0.0.0.0'
       - 'bootstrap.memory_lock=true'
       - 'ES_JAVA_OPTS=-Xms256m -Xmx256m'
       - 'xpack.security.enabled=false'
