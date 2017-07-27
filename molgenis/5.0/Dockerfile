@@ -14,6 +14,6 @@ RUN rm -r $CATALINA_HOME/webapps/ROOT \
 	&& echo 'CATALINA_OPTS="-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dmolgenis.home=/opt/molgenis/"' > $CATALINA_HOME/bin/setenv.sh
 
 RUN mkdir -p /opt/molgenis
-RUN cd /opt/molgenis/; echo -e "db_user=molgenis\ndb_password=molgenis\ndb_uri=jdbc\:postgresql\://db/molgenis\nadmin.password=admin\nelasticsearch.transport.addresses=elasticsearch:9300" > /opt/molgenis/molgenis-server.properties
+RUN echo -e "db_user=molgenis\ndb_password=molgenis\ndb_uri=jdbc\:postgresql\://db/molgenis\nadmin.password=admin\nelasticsearch.transport.addresses=elasticsearch:9300" > /opt/molgenis/molgenis-server.properties
 
 CMD ["catalina.sh", "run"]
