@@ -30,7 +30,7 @@
       io.rancher.scheduler.affinity:host_label: type=molgenis
       io.rancher.scheduler.affinity:container_label: io.rancher.stack.name=molgenis
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.5.1
     environment:
       - "cluster.name=molgenis"
       - "bootstrap.memory_lock=true"
