@@ -1,6 +1,6 @@
 FROM tomcat:7.0-jre8-alpine
 
-ENV MOLGENIS_VERSION=5.0.0
+ENV MOLGENIS_VERSION=5.0.1
 
 # --no-cache allows users to install packages with an index that is updated and used on-the-fly and not cached locally
 # This avoids the need to use --update and remove /var/cache/apk/* when done installing packages.
@@ -14,6 +14,7 @@ RUN rm -r $CATALINA_HOME/webapps/ROOT \
 	&& echo 'CATALINA_OPTS="-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dmolgenis.home=/opt/molgenis/"' > $CATALINA_HOME/bin/setenv.sh
 
 RUN mkdir -p /opt/molgenis
+RUN rm /opt/molgenis/molgenis-server.properties
 RUN echo -e "db_user=molgenis\ndb_password=molgenis\ndb_uri=jdbc\:postgresql\://db/molgenis\nadmin.password=admin\nelasticsearch.transport.addresses=elasticsearch:9300" > /opt/molgenis/molgenis-server.properties
 
 CMD ["catalina.sh", "run"]
