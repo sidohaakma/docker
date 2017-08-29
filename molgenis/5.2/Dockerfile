@@ -7,10 +7,11 @@ ENV MOLGENIS_VERSION=5.2.0-SNAPSHOT
 RUN apk --no-cache add openssl \	
 	&& wget -O molgenis-app-$MOLGENIS_VERSION.war http://haakma.org/molgenis/molgenis-app-$MOLGENIS_VERSION.war
 
-RUN rm -r $CATALINA_HOME/webapps/ROOT \
+RUN mkdir -p /srv/molgenis/.molgenis
+    rm -r $CATALINA_HOME/webapps/ROOT \
     && rm -r $CATALINA_HOME/webapps/docs \
     && rm -r $CATALINA_HOME/webapps/examples \
     && mv molgenis-app-$MOLGENIS_VERSION.war $CATALINA_HOME/webapps/ROOT.war \
-	&& echo 'CATALINA_OPTS="-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dmolgenis.home=/opt/molgenis/"' > $CATALINA_HOME/bin/setenv.sh
+	&& echo 'CATALINA_OPTS="-Xmx1g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Dmolgenis.home=/srv/molgenis/.molgenis"' > $CATALINA_HOME/bin/setenv.sh
 
 CMD ["catalina.sh", "run"]
